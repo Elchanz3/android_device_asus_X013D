@@ -18,10 +18,14 @@ LZMA_BIN := $(shell which lzma)
 
 $(INSTALLED_RECOVERYIMAGE_TARGET): $(MKBOOTIMG) \
 		$(recovery_uncompressed_ramdisk) \
-		$(recovery_kernel)
+		$(recovery_kernel) \
+		$(TARGET_PREBUILT_DTB)
 	@echo -e ${PRT_IMG}"----- Making compressed recovery ramdisk ------"${CL_RST}
 	$(hide) $(LZMA_BIN) < $(recovery_uncompressed_ramdisk) > $(recovery_ramdisk)
-	@echo -e ${PRT_IMG}"----- Making recovery image ------"${CL_RST}
-	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) $(BOARD_MKBOOTIMG_ARGS) --output $@
+	@echo -e ${PRT_IMG}"----- Making recovery image (with DTB) ------"${CL_RST}
+	$(hide) $(MKBOOTIMG) $(INTERNAL_RECOVERYIMAGE_ARGS) \
+		$(BOARD_MKBOOTIMG_ARGS) \
+		--dt $(TARGET_PREBUILT_DTB) \
+		--output $@
 	$(hide) $(call assert-max-image-size,$@,$(BOARD_RECOVERYIMAGE_PARTITION_SIZE))
 	@echo -e ${PRT_IMG}"Made recovery image: $@"${CL_RST}

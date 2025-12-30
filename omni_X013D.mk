@@ -29,8 +29,8 @@ $(call inherit-product, vendor/omni/config/common.mk)
 PRODUCT_PACKAGES += \
     detect-gpe
 
-PRODUCT_NAME := omni_falcon
-PRODUCT_DEVICE := falcon
-PRODUCT_BRAND := Motorola
-PRODUCT_MANUFACTURER := Motorola
-PRODUCT_MODEL := Moto G
+PRODUCT_NAME := omni_X013D
+PRODUCT_DEVICE := X013D
+PRODUCT_BRAND := Asus
+PRODUCT_MANUFACTURER := Asus
+PRODUCT_MODEL := Zenfone Go ZB551KL

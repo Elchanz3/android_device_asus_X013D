@@ -16,9 +16,9 @@ TARGET_CPU_VARIANT := krait
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 # Kernel Prebuilt
-TARGET_PREBUILT_KERNEL := device/motorola/falcon/zImage-dtb
-BOARD_CUSTOM_BOOTIMG_MK := device/motorola/falcon/mkbootimg.mk
-BOARD_KERNEL_CMDLINE := androidboot.bootdevice=msm_sdcc.1 androidboot.hardware=qcom vmalloc=400M androidboot.selinux=permissive
+TARGET_PREBUILT_KERNEL := device/asus/X013D/recovery.img-kernel
+BOARD_CUSTOM_BOOTIMG_MK := device/asus/X013D/mkbootimg.mk
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 earlyprintk androidboot.console=ttyHSL0 androidboot.hardware=qcom user_debug=23 msm_rtb.filter=0x37 androidboot.bootdevice=msm_sdcc.1
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01000000
 
@@ -48,3 +48,6 @@ TW_INCLUDE_CRYPTO := true
 TW_INCLUDE_NTFS_3G := true
 TW_NO_USB_STORAGE := true
 TW_THEME := portrait_hdpi
+
+TW_INCLUDE_DTB := true
+TARGET_PREBUILT_DTB := device/asus/X013D/recovery.img-dt
